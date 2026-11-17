@@ -15,10 +15,10 @@ def main():
     clock = pygame.time.Clock()
     dt = 0.0
     #Group creation
-    updatable = pygame.sprite.Group()
-    drawable = pygame.sprite.Group()
-    asteroids = pygame.sprite.Group()
-    shots = pygame.sprite.Group()
+    updatable: pygame.sprite.Group = pygame.sprite.Group()
+    drawable: pygame.sprite.Group = pygame.sprite.Group()
+    asteroids: pygame.sprite.Group = pygame.sprite.Group()
+    shots: pygame.sprite.Group = pygame.sprite.Group()
     #Group assignment
     Player.containers = (updatable, drawable)
     Asteroid.containers = (asteroids, updatable, drawable)
@@ -48,7 +48,7 @@ def main():
             for shot in shots:
                 if shot.collides_with(asteroid):
                     log_event("asteroid_shot")
-                    asteroid.kill()
+                    asteroid.split()
                     shot.kill()
         for d in drawable:
             d.draw(screen)
